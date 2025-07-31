@@ -1,0 +1,55 @@
+/**
+ * Copyright (c)  2022  Xiaomi Corporation (authors: Fangjun Kuang)
+ * Copyright (c)  2022                     (Pingfeng Luo)
+ * Copyright (c)  2025  frankyj@foxmail.com  (authors: Jian You)
+ *
+ * See LICENSE for clarification regarding multiple authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#ifndef SHERPA_DEPLOY_OPENVINO_MODIFIED_BEAM_SEARCH_DECODER_H_
+#define SHERPA_DEPLOY_OPENVINO_MODIFIED_BEAM_SEARCH_DECODER_H_
+
+#include <vector>
+
+#include "decoder.h"
+#include "model.h"
+#include "stream.h"
+#include "runtime/core/context-graph.h"
+
+namespace SherpaDeploy {
+
+class ModifiedBeamSearchDecoder : public Decoder {
+ public:
+  ModifiedBeamSearchDecoder(Model *model, int32_t num_active_paths)
+      : model_(model), num_active_paths_(num_active_paths) {}
+
+  DecoderResult GetEmptyResult() const override;
+
+  void StripLeadingBlanks(DecoderResult *r) const override;
+
+  void Decode(ov::Tensor encoder_out, DecoderResult *result) override;
+  void Decode(ov::Tensor encoder_out, Stream *s, DecoderResult *result) override;
+
+ private:
+  ov::Tensor BuildDecoderInput(const std::vector<SherpaDeploy::Hypothesis> &hyps) const;
+
+ private:
+  Model *model_;  // not owned
+  int32_t num_active_paths_;
+};
+
+}  // namespace SherpaDeploy
+
+#endif  // SHERPA_DEPLOY_OPENVINO_MODIFIED_BEAM_SEARCH_DECODER_H_
