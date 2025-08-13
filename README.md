@@ -8,6 +8,6 @@ The OnnxRuntime and NCNN implementations are from K2 official repos [sherpa-onnx
 ```
 mkdir build
 cd build
-cmake -T v142,host=x64 -A x64 -D CMAKE_BUILD_TYPE=Release -DSHERPA_ONE_ENABLE_OPENVINO=ON -DBUILD_SHARED_LIBS=ON ..
+cmake -T v142,host=x64 -A x64 -D CMAKE_BUILD_TYPE=Release -DSHERPA_DEPLOY_ENABLE_OPENVINO=ON -DBUILD_SHARED_LIBS=ON ..
 cmake --build . --config Release -- -m:6
 ```
