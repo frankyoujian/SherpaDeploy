@@ -125,7 +125,7 @@ Usage:
 
   config.rule1_min_trailing_silence = 2.4;
   config.rule2_min_trailing_silence = 1.2;
-  config.rule3_min_utterance_length = 300;
+  config.rule3_min_utterance_length = 20;
 
   config.feat_config.sampling_rate = expected_sampling_rate;
   config.feat_config.feature_dim = 80;

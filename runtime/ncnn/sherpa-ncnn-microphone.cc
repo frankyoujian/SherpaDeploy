@@ -109,7 +109,7 @@ for a list of pre-trained models to download.
 
   config.endpoint_config.rule1.min_trailing_silence = 2.4;
   config.endpoint_config.rule2.min_trailing_silence = 1.2;
-  config.endpoint_config.rule3.min_utterance_length = 300;
+  config.endpoint_config.rule3.min_utterance_length = 20;
 
   config.feat_config.sampling_rate = expected_sampling_rate;
   config.feat_config.feature_dim = 80;
