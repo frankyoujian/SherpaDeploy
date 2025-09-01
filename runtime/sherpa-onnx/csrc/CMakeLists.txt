@@ -1,4 +1,4 @@
-include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/runtime)
 
 if(SHERPA_ONNX_ENABLE_PYTHON)
   message(STATUS "PYTHON_EXECUTABLE: ${PYTHON_EXECUTABLE}")

@@ -489,7 +489,7 @@ if(SHERPA_ONNX_ENABLE_SANITIZER)
 endif()
 
 if(SHERPA_DEPLOY_ENABLE_ONNXRT)
-  add_subdirectory(sherpa-onnx)
+  add_subdirectory(runtime/sherpa-onnx)
 endif()
 
 if(SHERPA_DEPLOY_ENABLE_NCNN)
